@@ -1,4 +1,4 @@
-import funciones
+import funciones as f
 
 char = ''
 
@@ -40,34 +40,34 @@ while x != 'e':
                 # Primera iteracion
                 if j == 0:
                     # Generar primera poblacion, en binario y enteros con sus fitness y valores objetivo
-                    poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
+                    poblacion, poblacion_nro, fit, func_obj = f.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
-                    valores.append(funciones.maxMinProm(func_obj))
+                    valores.append(f.maxMinProm(func_obj))
                     # Imprimir tabla de resultados de la primera poblacion
-                    funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
+                    f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Seleccinar con ruleta
-                    seleccionados = funciones.ruleta(poblacion, fit, 10)
+                    seleccionados = f.ruleta(poblacion, fit, 10)
                     # Realizar crossover a los seleccionados
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 5)
                     # Realizar mutacion a la poblacion
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
                     # Convertir la nueva poblacion a numeros
-                    poblacion_nro = funciones.hacerNumero(poblacion)
+                    poblacion_nro = f.hacerNumero(poblacion)
                     # Calcular fitness y valores objetivos de la nueva poblacion
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
                 # Proximas iteraciones
                 else:
-                    seleccionados = funciones.ruleta(poblacion, fit, 10)
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
-                    poblacion_nro = funciones.hacerNumero(poblacion)
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
+                    seleccionados = f.ruleta(poblacion, fit, 10)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 5)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
+                    poblacion_nro = f.hacerNumero(poblacion)
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
             # Imprimir tabla de poblacion
-            funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
             # Realiar graficas de los valores
-            funciones.graficas(valores, n+1)
+            f.graficas(valores, n+1)
 
     # Ruleta con elitismo
     elif x == 'b':
@@ -81,38 +81,38 @@ while x != 'e':
                 # Primera iteracion
                 if j == 0:
                     # Generar primera poblacion, en binario y enteros con sus fitness y valores objetivo
-                    poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
+                    poblacion, poblacion_nro, fit, func_obj = f.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
-                    valores.append(funciones.maxMinProm(func_obj))
+                    valores.append(f.maxMinProm(func_obj))
                     # Imprimir tabla de resultados de la primera poblacion
-                    funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
+                    f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Elegir la elite
-                    elite = (funciones.elitismo(poblacion, fit))
+                    elite = (f.elitismo(poblacion, fit))
                     # Seleccinar con ruleta
-                    seleccionados = funciones.ruleta(poblacion, fit, 8)
+                    seleccionados = f.ruleta(poblacion, fit, 8)
                     # Realizar crossover a los seleccionados
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 4)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 4)
                     # Realizar mutacion a la poblacion
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
                     # Incluir a la elite en la nueva poblacion
                     for i in elite:
                         poblacion.append(i)
-                    poblacion_nro = funciones.hacerNumero(poblacion)
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
+                    poblacion_nro = f.hacerNumero(poblacion)
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
                 # Proximas iteraciones
                 else:
-                    elite = (funciones.elitismo(poblacion, fit))
-                    seleccionados = funciones.ruleta(poblacion, fit, 8)
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 4)
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
+                    elite = (f.elitismo(poblacion, fit))
+                    seleccionados = f.ruleta(poblacion, fit, 8)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 4)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
                     for i in elite:
                         poblacion.append(i)
-                    poblacion_nro = funciones.hacerNumero(poblacion)
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
-            funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
-            funciones.graficas(valores, n+1)
+                    poblacion_nro = f.hacerNumero(poblacion)
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
+            f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.graficas(valores, n+1)
 
     # Torneo
     elif x == 'c':
@@ -128,34 +128,34 @@ while x != 'e':
                 # Primera iteracion
                 if j == 0:
                     # Generar primera poblacion, en binario y enteros con sus fitness y valores objetivo
-                    poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
+                    poblacion, poblacion_nro, fit, func_obj = f.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
-                    valores.append(funciones.maxMinProm(func_obj))
+                    valores.append(f.maxMinProm(func_obj))
                     # Imprimir tabla de resultados de la primera poblacion
-                    funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
+                    f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Seleccinar con ruleta
-                    seleccionados = funciones.torneo(poblacion, fit, 10)
+                    seleccionados = f.torneo(poblacion, fit, 10)
                     # Realizar crossover a los seleccionados
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 5)
                     # Realizar mutacion a la poblacion
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
                     # Convertir la nueva poblacion a numeros
-                    poblacion_nro = funciones.hacerNumero(poblacion)
+                    poblacion_nro = f.hacerNumero(poblacion)
                     # Calcular fitness y valores objetivos de la nueva poblacion
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
                 # Proximas iteraciones
                 else:
-                    seleccionados = funciones.torneo(poblacion, fit, 10)
-                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
-                    poblacion = funciones.mutacion(p_mut, nueva_poblacion)
-                    poblacion_nro = funciones.hacerNumero(poblacion)
-                    fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(func_obj))
+                    seleccionados = f.torneo(poblacion, fit, 10)
+                    nueva_poblacion = f.crossover(p_cross, seleccionados, 5)
+                    poblacion = f.mutacion(p_mut, nueva_poblacion)
+                    poblacion_nro = f.hacerNumero(poblacion)
+                    fit, func_obj = f.calcFitObj(poblacion_nro)
+                    valores.append(f.maxMinProm(func_obj))
             # Imprimir tabla de poblacion
-            funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
             # Realiar graficas de los valores
-            funciones.graficas(valores, n+1)
+            f.graficas(valores, n+1)
 
     # Cambiar valores de probabilidad
     elif x == 'd':

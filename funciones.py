@@ -58,23 +58,16 @@ def maxMinProm(l):
 
 # Metodo de ruleta
 def ruleta(p, f, n):
-    ruleta = []
     pares = []
     seleccionados = []
-    # LLenar la ruleta de cromosomas con una cantidad de entradas proporcional al fitness
-    for i in range(10):
-        for j in range(int(round(f[i] * 1000, 0))):
-            ruleta.append(p[i])
-    # Arreglar errores de redondeo
-    if len(ruleta) < 1000:
-        for i in range(1000 - len(ruleta)):
-            ruleta.append(p[f.index(max(f))])
-    elif len(ruleta) > 1000:
-        for i in range(len(ruleta) - 1000):
-            ruleta.pop()
-    # Elegir pares de cromsomas
-    for i in range(n):
-        pares.append(ruleta[random.randint(0, 999)])
+    for j in range(n):
+        r = random.random()
+        fit = 0
+        for i in f:
+            fit += i
+            if fit > r:
+                pares.append(p[f.index(i)])
+                break
         if len(pares) == 2:
             seleccionados.append(pares)
             pares = []
@@ -190,9 +183,9 @@ def graficas(l, n):
         max.append(i[0])
         min.append(i[1])
         prom.append(i[2])
-    plt.plot(range(n), max, c = 'FireBrick')
-    plt.plot(range(n), min, c = 'Gold')
-    plt.plot(range(n), prom, c = 'ForestGreen')
+    plt.plot(range(n), max, linewidth = 3, c = 'FireBrick')
+    plt.plot(range(n), min, linewidth = 3, c = 'Gold')
+    plt.plot(range(n), prom, linewidth = 3, c = 'ForestGreen')
     plt.grid()
     plt.xlim(0, n)
     plt.ylim(0, 1)

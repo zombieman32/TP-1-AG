@@ -80,6 +80,26 @@ def ruleta(p, f, n):
             pares = []
     return seleccionados
 
+def torneo(l, f, n):
+    a = [[], []]
+    seleccionados = []
+    pares = []
+    for j in range(n):
+        for i in range(2):
+            m = random.randint(0, 9)
+            a[i].append(l[m])
+            a[i].append(f[m])
+        if a[0][1] > a[1][1]:
+            pares.append(a[0][0])
+        else:
+            pares.append(a[1][0])
+        a = [[], []]
+        if len(pares) == 2:
+            seleccionados.append(pares)
+            pares = []
+    return seleccionados
+
+
 # Metodo de crossover
 def crossover(p, l, m):
      s = []
@@ -151,7 +171,7 @@ def imprimirValores(pob, pob_nro, fit, obj, n):
     # Impresion de cromosomas, valor numerico, fitness y valor objetivo
     for i in pob:
         print(i, pob_nro[pob.index(i)], fit[pob.index(i)], obj[pob.index(i)])
-    print("+-----------------------------------------------------------------------------------------------------+")
+    print("+-----------------------------------------------------------------------------------+")
     # Impresion de suma de fitness y de funcion objetivo
     print('Suma:                                    ', round(sum(fit)), '                 ',sum(obj))
     # Impresion del promedio de los cromosomas, el fitness y la funcion objetivo

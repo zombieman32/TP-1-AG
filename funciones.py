@@ -39,10 +39,11 @@ def calcFitObj(nro):
     f = []
     o = []
     for i in nro:
-        # Fitness
-        f.append(i / sum(nro))
         # Funcion objetivo
         o.append((i / (2**30 - 1))**2)
+    for i in o:
+        # Fitness
+        f.append(i / sum(o))
     return f, o
 
 # Calcular maximos, minimos y promedios

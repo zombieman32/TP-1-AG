@@ -62,7 +62,7 @@ def ruleta(p, f, n):
     pares = []
     seleccionados = []
     for j in range(n):
-        r = random.random()
+        r = random.uniform(0, 1)
         fit = 0
         for i in f:
             fit += i
@@ -190,7 +190,7 @@ def graficas(l, n):
     plt.plot(range(n), prom, linewidth = 3, c = 'ForestGreen')
     plt.grid()
     plt.xlim(0, n)
-    plt.ylim(0, 1)
+    plt.ylim(0, 1.1)
     plt.autoscale(False)
     plt.xlabel('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
     plt.title(title)

@@ -37,7 +37,6 @@ while x != d:
             elif i == 2:
                 n = 199
             valores = []
-            path = 'primera_poblacion_%d.txt' % (n + 1)
             for j in range(n):
                 # Primera iteracion
                 if j == 0:
@@ -45,8 +44,6 @@ while x != d:
                     poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
                     valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
-                    # Guardar archivos
-                    funciones.guardarArchivo(poblacion, path)
                     # Imprimir tabla de resultados de la primera poblacion
                     funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Seleccinar con ruleta
@@ -71,8 +68,6 @@ while x != d:
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
                     valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
                 funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
-                path = 'poblacion_%d.txt' % (n + 1)
-                funciones.guardarArchivo(poblacion, path)
 
     # Ruleta con elitismo
     elif x == 'b':
@@ -82,7 +77,6 @@ while x != d:
             elif i == 1:
                 n = 99
             valores = []
-            path = 'primera_poblacion_%d.txt' % (n + 1)
             for j in range(n):
                 # Primera iteracion
                 if j == 0:
@@ -90,8 +84,6 @@ while x != d:
                     poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
                     valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
-                    # Guardar archivos
-                    funciones.guardarArchivo(poblacion, path)
                     # Imprimir tabla de resultados de la primera poblacion
                     funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Elegir la elite
@@ -120,13 +112,4 @@ while x != d:
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
                     valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
             funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
-            path = 'poblacion_%d.txt' % (n + 1)
-            funciones.guardarArchivo(poblacion, path)
 # elif x == 'c':
-
-# with open("poblacion.txt", "wb") as fp:  # Pickling
-#    pickle.dump(poblacion, fp)
-#    fp.close()
-# with open("poblacion.txt", "rb") as fp:
-#    b = pickle.load(fp)
-#    fp.close()

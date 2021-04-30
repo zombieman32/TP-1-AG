@@ -54,11 +54,6 @@ def maxMinProm(l, s):
     a.append(sum(s)/len(s))
     return a
 
-def guardarArchivo(l, p):
-    with open(p, "wb") as fp:
-        pickle.dump(l, fp)
-        fp.close()
-
 # Metodo de ruleta
 def ruleta(p, f, n):
     ruleta = []

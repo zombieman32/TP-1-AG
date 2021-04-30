@@ -130,13 +130,13 @@ def mutacion(p, l):
             # Cambiar de 0 a 1
             if s[r] == '0':
                 s[r] = '1'
-                i = ''.join(s)
-                a.append(i)
+                j = ''.join(s)
+                a.append(j)
             # Cambiar de 1 a 0
             elif s[r] == '1':
                 s[r] = '0'
-                i = ''.join(s)
-                a.append(i)
+                j = ''.join(s)
+                a.append(j)
         else:
             # Mutacion negativa, mantener cromosoma en la proxima generacion
             a.append(i)
@@ -190,7 +190,7 @@ def graficas(l, n):
     plt.plot(range(n), prom, linewidth = 3, c = 'ForestGreen')
     plt.grid()
     plt.xlim(0, n)
-    plt.ylim(0, 1.1)
+    plt.ylim(0, 1)
     plt.autoscale(False)
     plt.xlabel('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
     plt.title(title)

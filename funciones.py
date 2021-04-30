@@ -180,6 +180,7 @@ def graficas(l, n):
     max = []
     min = []
     prom = []
+    title = 'Poblacion %d'%n
     for i in l:
         max.append(i[0])
         min.append(i[1])
@@ -191,7 +192,8 @@ def graficas(l, n):
     plt.xlim(0, n)
     plt.ylim(0, 1)
     plt.autoscale(False)
-    plt.title('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
+    plt.xlabel('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
+    plt.title(title)
     plt.savefig('valores%d.svg'%n, bbox_inches='tight')
     plt.show()
     plt.clf()

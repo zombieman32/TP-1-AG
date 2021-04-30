@@ -20,11 +20,12 @@ print('+-------------------------+\n')
 print('a) Ruleta')
 print('b) Ruleta c/ elitismo')
 print('c) Rango')
-print('d) Salir\n')
+print('d) Cambiar probabilidades')
+print('e) Salir\n')
 x = input('Elija una opcion: ')
 
 # Bucle del programa
-while x != 'd':
+while x != 'e':
     # Ruleta
     if x == 'a':
         for i in range(3):
@@ -113,11 +114,15 @@ while x != 'd':
             funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
             funciones.graficas(valores, n+1)
     #elif x == 'c':
+    elif x == 'd':
+        p_cross = int(input('Probabilidad de crossover: '))/100
+        p_mut = int(input('Probabilidad de crossover: '))/100
     print('+-------------------------+')
     print(' Tp 1 Algoritmos Geneticos ')
     print('+-------------------------+\n')
     print('a) Ruleta')
     print('b) Ruleta c/ elitismo')
     print('c) Rango')
-    print('d) Salir\n')
+    print('d) Cambiar probabilidades')
+    print('e) Salir\n')
     x = input('Elija una opcion: ')

@@ -2,6 +2,8 @@ import random
 import math
 import array
 import pickle
+import matplotlib.pyplot as plt
+import numpy as np
 
 # Generar primera poblacion en binario y en numeros enteros y calcular su fitness y valor en la funcion objetivo
 def generarPoblacion():
@@ -20,17 +22,17 @@ def generarPoblacion():
         poblacion.append(cromosoma_txt)
         cromosoma = []
     # Transformar los cromosomas de texto a numeros enteros
-    poblacion_nro = poblacionNumero(poblacion)
+    poblacion_nro = hacerNumero(poblacion)
     # Calcular el fitness y el valor objetivo de cada cromosoma
     fitness, func_obj = calcFitObj(poblacion_nro)
     return poblacion, poblacion_nro, fitness, func_obj
 
 # Transformar la poblacion de texto a numeros enteros
-def poblacionNumero(l):
-    pob_nro = []
+def hacerNumero(l):
+    a = []
     for i in l:
-        pob_nro.append(int('0b' + i, base=2))
-    return pob_nro
+        a.append(int('0b' + i, base=2))
+    return a
 
 # Calcular fitness y valor en funcion objetivo
 def calcFitObj(nro):
@@ -44,14 +46,14 @@ def calcFitObj(nro):
     return f, o
 
 # Calcular maximos, minimos y promedios
-def maxMinProm(l, s):
+def maxMinProm(l):
     a = []
-    # Minimos
-    a.append(l[s.index(min(s))])
     # Maximos
-    a.append(l[s.index(max(s))])
+    a.append(max(l))
+    # Minimos
+    a.append(min(l))
     # Promedios
-    a.append(sum(s)/len(s))
+    a.append(sum(l)/len(l))
     return a
 
 # Metodo de ruleta
@@ -142,15 +144,14 @@ def elitismo(l, p):
 
 # Impresion de tablas
 def imprimirValores(pob, pob_nro, fit, obj, n):
-    print("Tp 1 Algoritmos Genéticos")
-    print("=-----------------------------------------------------------------------------------------------------=")
+    print("+-----------------------------------------------------------------------------------+")
     print('Generacion ', n)
-    print("=-----------------------------------------------------------------------------------------------------=")
+    print("+-----------------------------------------------------------------------------------+")
     print("Cromosoma                      Número     Fitness            Func. objetivo")
     # Impresion de cromosomas, valor numerico, fitness y valor objetivo
     for i in pob:
         print(i, pob_nro[pob.index(i)], fit[pob.index(i)], obj[pob.index(i)])
-    print("=-----------------------------------------------------------------------------------------------------=")
+    print("+-----------------------------------------------------------------------------------------------------+")
     # Impresion de suma de fitness y de funcion objetivo
     print('Suma:                                    ', round(sum(fit)), '                 ',sum(obj))
     # Impresion del promedio de los cromosomas, el fitness y la funcion objetivo
@@ -159,3 +160,24 @@ def imprimirValores(pob, pob_nro, fit, obj, n):
     print('Mínimo: ', pob[pob_nro.index(min(pob_nro))], min(pob_nro), fit[pob_nro.index(min(pob_nro))], obj[pob_nro.index(min(pob_nro))])
     # Impresion de cromosoma maximo, su valor numerico, su fitness y su valor objetivo
     print('Máximo: ', pob[pob_nro.index(max(pob_nro))], max(pob_nro), fit[pob_nro.index(max(pob_nro))], obj[pob_nro.index(max(pob_nro))], '\n')
+
+# Realizar graficas de valores maximos, minimos y promedios
+def graficas(l, n):
+    max = []
+    min = []
+    prom = []
+    for i in l:
+        max.append(i[0])
+        min.append(i[1])
+        prom.append(i[2])
+    plt.plot(range(n), max, c = 'FireBrick')
+    plt.plot(range(n), min, c = 'Gold')
+    plt.plot(range(n), prom, c = 'ForestGreen')
+    plt.grid()
+    plt.xlim(0, n)
+    plt.ylim(0, 1)
+    plt.autoscale(False)
+    plt.title('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
+    plt.savefig('valores%d.svg'%n, bbox_inches='tight')
+    plt.show()
+    plt.clf()

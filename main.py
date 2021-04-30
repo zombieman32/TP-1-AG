@@ -1,6 +1,3 @@
-import random
-import math
-import array
 import funciones
 
 poblacion = []
@@ -17,16 +14,17 @@ elite = []
 char = ''
 
 # Menu de inicio del programa
-while x != d:
-    print('=-------------------------=')
-    print(' Tp 1 Algoritmos Geneticos ')
-    print('=-------------------------=\n')
-    print('a) Ruleta')
-    print('b) Ruleta c/ elitismo')
-    print('c) Rango\n')
-    print('d) Salir')
-    x = input('Elija una opcion: ')
+print('+-------------------------+')
+print(' Tp 1 Algoritmos Geneticos ')
+print('+-------------------------+\n')
+print('a) Ruleta')
+print('b) Ruleta c/ elitismo')
+print('c) Rango')
+print('d) Salir\n')
+x = input('Elija una opcion: ')
 
+# Bucle del programa
+while x != 'd':
     # Ruleta
     if x == 'a':
         for i in range(3):
@@ -43,31 +41,32 @@ while x != d:
                     # Generar primera poblacion, en binario y enteros con sus fitness y valores objetivo
                     poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
+                    valores.append(funciones.maxMinProm(func_obj))
                     # Imprimir tabla de resultados de la primera poblacion
                     funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Seleccinar con ruleta
                     seleccionados = funciones.ruleta(poblacion, fit, 10)
                     # Realizar crossover a los seleccionados
-                    nueva_poblacion = funciones.crossover(
-                    p_cross, seleccionados, 5)
+                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
                     # Realizar mutacion a la poblacion
                     poblacion = funciones.mutacion(p_mut, nueva_poblacion)
                     # Convertir la nueva poblacion a numeros
-                    poblacion_nro = funciones.poblacionNumero(poblacion)
+                    poblacion_nro = funciones.hacerNumero(poblacion)
                     # Calcular fitness y valores objetivos de la nueva poblacion
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
+                    valores.append(funciones.maxMinProm(func_obj))
                 # Proximas iteraciones
                 else:
                     seleccionados = funciones.ruleta(poblacion, fit, 10)
-                    nueva_poblacion = funciones.crossover(
-                        p_cross, seleccionados, 5)
+                    nueva_poblacion = funciones.crossover(p_cross, seleccionados, 5)
                     poblacion = funciones.mutacion(p_mut, nueva_poblacion)
-                    poblacion_nro = funciones.poblacionNumero(poblacion)
+                    poblacion_nro = funciones.hacerNumero(poblacion)
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
-                funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+                    valores.append(funciones.maxMinProm(func_obj))
+            # Imprimir tabla de poblacion
+            funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            # Realiar graficas de los valores
+            funciones.graficas(valores, n+1)
 
     # Ruleta con elitismo
     elif x == 'b':
@@ -83,7 +82,7 @@ while x != d:
                     # Generar primera poblacion, en binario y enteros con sus fitness y valores objetivo
                     poblacion, poblacion_nro, fit, func_obj = funciones.generarPoblacion()
                     # Guardar valores maximos, minimos y promedio
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
+                    valores.append(funciones.maxMinProm(func_obj))
                     # Imprimir tabla de resultados de la primera poblacion
                     funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 1)
                     # Elegir la elite
@@ -97,9 +96,9 @@ while x != d:
                     # Incluir a la elite en la nueva poblacion
                     for i in elite:
                         poblacion.append(i)
-                    poblacion_nro = funciones.poblacionNumero(poblacion)
+                    poblacion_nro = funciones.hacerNumero(poblacion)
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
+                    valores.append(funciones.maxMinProm(func_obj))
                 # Proximas iteraciones
                 else:
                     elite = (funciones.elitismo(poblacion, fit))
@@ -108,8 +107,17 @@ while x != d:
                     poblacion = funciones.mutacion(p_mut, nueva_poblacion)
                     for i in elite:
                         poblacion.append(i)
-                    poblacion_nro = funciones.poblacionNumero(poblacion)
+                    poblacion_nro = funciones.hacerNumero(poblacion)
                     fit, func_obj = funciones.calcFitObj(poblacion_nro)
-                    valores.append(funciones.maxMinProm(poblacion, poblacion_nro))
+                    valores.append(funciones.maxMinProm(func_obj))
             funciones.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
-# elif x == 'c':
+            funciones.graficas(valores, n+1)
+    #elif x == 'c':
+    print('+-------------------------+')
+    print(' Tp 1 Algoritmos Geneticos ')
+    print('+-------------------------+\n')
+    print('a) Ruleta')
+    print('b) Ruleta c/ elitismo')
+    print('c) Rango')
+    print('d) Salir\n')
+    x = input('Elija una opcion: ')

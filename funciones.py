@@ -2,7 +2,6 @@ import random
 import math
 import array
 import matplotlib.pyplot as plt
-import numpy as np
 
 # Generar primera poblacion en binario y en numeros enteros y calcular su fitness y valor en la funcion objetivo
 def generarPoblacion():

@@ -191,7 +191,7 @@ def graficas(l, n):
     plt.autoscale(False)
     plt.xlabel('Rojo: Maximos, Amarillo: Minimos, Verde: Promedios')
     plt.title(title)
-    plt.savefig('valores%d.svg'%n, bbox_inches='tight')
+    plt.savefig('./gráficos/valores%d.svg'%n, bbox_inches='tight')
     plt.show()
     plt.clf()
 
@@ -207,7 +207,7 @@ def guardarArchivo(v, n):
         a.append(','.join(b))
         b = []
     c = '\n'.join(a)
-    path = "valores%d.txt"%n
+    path = "./tablas/valores%d.txt"%n
     with open(path, "wb") as fp:
         pickle.dump(c, fp)
     a = []

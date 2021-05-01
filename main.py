@@ -2,16 +2,22 @@ import funciones as f
 
 char = ''
 
+p_cross = 0.75
+p_mut = 0.05
+
 # Menu de inicio del programa
 print('+-------------------------+')
 print(' Tp 1 Algoritmos Geneticos ')
 print('+-------------------------+\n')
+print('Probabilidad de crossover: ', p_cross)
+print('Probabilidad de mutación: ', p_mut, '\n')
 print('a) Ruleta')
 print('b) Ruleta c/ elitismo')
 print('c) Torneo')
 print('d) Cambiar probabilidades')
 print('e) Salir\n')
 x = input('Elija una opcion: ')
+
 
 # Bucle del programa
 while x != 'e':
@@ -21,8 +27,6 @@ while x != 'e':
     func_obj = []
     nueva_poblacion = []
     seleccionados = []
-    p_cross = 0.75
-    p_mut = 0.05
     valores = []
     elite = []
 
@@ -168,6 +172,8 @@ while x != 'e':
     print('+-------------------------+')
     print(' Tp 1 Algoritmos Geneticos ')
     print('+-------------------------+\n')
+    print('Probabilidad de crossover: ', p_cross)
+    print('Probabilidad de mutación: ', p_mut, '\n')
     print('a) Ruleta')
     print('b) Ruleta c/ elitismo')
     print('c) Torneo')

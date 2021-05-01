@@ -1,6 +1,5 @@
 import random
-import math
-import array
+import pickle
 import matplotlib.pyplot as plt
 
 # Generar primera poblacion en binario y en numeros enteros y calcular su fitness y valor en la funcion objetivo
@@ -195,3 +194,19 @@ def graficas(l, n):
     plt.savefig('valores%d.svg'%n, bbox_inches='tight')
     plt.show()
     plt.clf()
+
+def guardarArchivo(v, n):
+    a = []
+    b = []
+    for i in v:
+        for j in i:
+            b.append(str(j))
+        b.insert(0, '[')
+        b.append(']')
+        a.append(','.join(b))
+        b = []
+    c = '\n'.join(a)
+    path = "valores%d.txt"%n
+    with open(path, "wb") as fp:
+        pickle.dump(c, fp)
+    a = []

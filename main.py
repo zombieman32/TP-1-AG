@@ -66,6 +66,7 @@ while x != 'e':
                     valores.append(f.maxMinProm(func_obj))
             # Imprimir tabla de poblacion
             f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.guardarArchivo(valores, n+1)
             # Realiar graficas de los valores
             f.graficas(valores, n+1)
 
@@ -112,6 +113,7 @@ while x != 'e':
                     fit, func_obj = f.calcFitObj(poblacion_nro)
                     valores.append(f.maxMinProm(func_obj))
             f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.guardarArchivo(valores, n+1)
             f.graficas(valores, n+1)
 
     # Torneo
@@ -154,6 +156,7 @@ while x != 'e':
                     valores.append(f.maxMinProm(func_obj))
             # Imprimir tabla de poblacion
             f.imprimirValores(poblacion, poblacion_nro, fit, func_obj, j + 2)
+            f.guardarArchivo(valores, n+1)
             # Realiar graficas de los valores
             f.graficas(valores, n+1)
 

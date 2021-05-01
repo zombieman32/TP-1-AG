@@ -195,6 +195,7 @@ def graficas(l, n):
     plt.show()
     plt.clf()
 
+# Guardar valores a un archivo .txt
 def guardarArchivo(v, n):
     a = []
     b = []
